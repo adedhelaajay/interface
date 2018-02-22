@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+ 	<property name="env_prod" value="INTERFACELOGAPPENDER" />
+	<property name="env_local" value="CONSOLELOGAPPENDER" /> 
+
+
+	<appender name="CONSOLELOGAPPENDER" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+		<pattern>%d %-5p %c[1] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Application Loggers -->
+	<logger name="com.kp.recordinterface" level="info">
+		<appender-ref ref="CONSOLELOGAPPENDER" />
+	</logger>
+
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core" >
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="info" />
+	</logger>
+
+	<!-- Root Logger This is the Root Logger for all classes with additivity 
+		kept as default to "true" -->
+	<root level="info">
+		<appender-ref ref="CONSOLELOGAPPENDER" />
+	</root>
+
+</configuration>

@@ -1,0 +1,23 @@
+Steps to add local files to maven dependency.
+1. Create a new folder directly in project directory, ex: local-maven-repo. Place the jar here in this folder.
+2. Run the following command with appropriate .jar and other values.
+	mvn install:install-file -Dfile="${project.basedir}/local-maven-repo/RFulfillmentSource.jar" -DgroupId="org.kp.fulfillment.source" -DartifactId="RFulfillmentSource" -Dversion=1.0 -Dpackaging=jar
+	
+	This will create .jar in the .m2 repository, which can be referenced in pom file.
+
+3. 	Add this as dependency as any other dependency in your pom file
+        Ex:                   <dependency>
+                                             <groupId>org.kp.fulfillment.source</groupId>
+                                             <artifactId>RFulfillmentSource</artifactId>
+                                             <version>1.0</version>
+                              </dependency>
+                              
+                              
+Ex 2: RFulfillmentListenerEJB.jar
+mvn install:install-file -Dfile="RFulfillmentListenerEJB.jar" -DgroupId="org.kp.RFulfillmentListenerEJB" -DartifactId="RFulfillmentListenerEJB" -Dversion=1.0 -Dpackaging=jar
+
+<dependency>
+	<groupId>org.kp.RFulfillmentListenerEJB</groupId>
+	<artifactId>RFulfillmentListenerEJB</artifactId>
+	<version>1.0</version>
+</dependency>		                              

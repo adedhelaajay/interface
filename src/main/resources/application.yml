@@ -1,0 +1,15 @@
+logging:
+  config: classpath:log-config/logback-${spring.profiles.active}-spring.xml
+
+spring:
+  profiles:
+#    active: dr
+#    active: dr1
+    active: local
+#    active: local
+#    active: local
+#    active: local
+#    active: local
+#    active: local
+#    active: local
+         

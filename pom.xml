@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.kp</groupId>
+	<artifactId>RecordFulfillmentInterface</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+
+	<name>RecordFulfillmentInterface</name>
+	<description>Adding spring support to RRecordInterface</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.9.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<springboot-log4j>1.3.8.RELEASE</springboot-log4j>
+		<org.kp.fulfillment.source-version>1.0</org.kp.fulfillment.source-version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- Exclude spring boot logging as we use log4j -->
+			<!-- <exclusions> <exclusion> <groupId>org.springframework.boot</groupId> 
+				<artifactId>spring-boot-starter-logging</artifactId> </exclusion> </exclusions> -->
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- RFulfillmentSource -->
+		<dependency>
+			<groupId>org.kp.fulfillment.source</groupId>
+			<artifactId>RFulfillmentSource</artifactId>
+			<version>${org.kp.fulfillment.source-version}</version>
+		</dependency>
+
+		<!-- RFulfillmentListenerEJB -->
+		<dependency>
+			<groupId>org.kp.RFulfillmentListenerEJB</groupId>
+			<artifactId>RFulfillmentListenerEJB</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- RFulfillmentPrintListenerEJB -->
+		<dependency>
+			<groupId>org.kp.RFulfillmentPrintListenerEJB</groupId>
+			<artifactId>RFulfillmentPrintListenerEJB</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- listenertest -->
+<!-- 		<dependency>
+			<groupId>org.kp</groupId>
+			<artifactId>listenerTest</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency> -->
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<property name="log.folder" value="/logs/hrtsuat-interfaces" />
+	<property name="log.activity.fileName" value="interface.log" />
+	<property name="log.file.maxsize" value="90MB" />
+
+	<appender name="INTERFACELOGAPPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.folder}/${log.activity.fileName}</File>
+		<encoder>
+			<pattern>%d %-5p [%c] %msg %n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${log.folder}/${log.activity.fileName}-%d{YYYY-MM-dd}-%i
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 100MB -->
+				<maxFileSize>${log.file.maxsize}</maxFileSize>
+				<!-- keep 30 days' worth of history -->
+				<!-- <maxHistory>30</maxHistory> -->
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<param name="locationInfo" value="true" />
+		</rollingPolicy>
+	</appender>
+
+	<!--INTERFACELOGASYNCAPPENDER is the asynchronous logger for records package. 
+		All logging messages are sent to this log where they are buffered in memory. 
+		During free cycles the log messages are then spread to the RECORDSLOG. -->
+	<appender name="INTERFACELOGASYNCAPPENDER" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="INTERFACELOGAPPENDER" />
+	</appender>
+
+	<appender name="CONSOLELOGAPPENDER" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d %-5p %c[1] - %msg %n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Application Loggers -->
+	<logger name="org.kp.ffinterface" level="all">
+		<appender-ref ref="INTERFACELOGAPPENDER" />
+	</logger>
+
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="info" />
+	</logger>
+
+	<!-- Root Logger This is the Root Logger for all classes with additivity 
+		kept as default to "true" -->
+	<root level="warn">
+		<appender-ref ref="CONSOLELOGAPPENDER" />
+	</root>
+
+</configuration>

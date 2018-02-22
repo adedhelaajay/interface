@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Name: RecordFulfillmentInterface. 
+Revised-On: 11.21.2017 (D574083)
+Spring-boot-Version: 1.5.9.RELEASE
+Java-Version: 1.8
